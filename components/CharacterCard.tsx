@@ -59,7 +59,7 @@ function CharacterCard({ character }: CharacterCardProps) {
     <Link
       href={`/character/${character.id}`}
       onClick={handleClick}
-      className="group relative block overflow-hidden rounded-lg border-2 border-green-500/30 dark:bg-gradient-to-br dark:from-green-950/30 dark:via-green-900/20 dark:to-black/60 bg-gradient-to-br from-green-950/60 via-green-900/50 to-black/80 backdrop-blur-sm cartoon-hover hover:border-green-400/80 hover:shadow-[0_0_30px_rgba(34,197,94,0.5),0_0_60px_rgba(34,197,94,0.2)]"
+      className="group relative block w-full overflow-hidden rounded-lg border-2 border-green-500/30 dark:bg-gradient-to-br dark:from-green-950/30 dark:via-green-900/20 dark:to-black/60 bg-gradient-to-br from-green-950/60 via-green-900/50 to-black/80 backdrop-blur-sm cartoon-hover hover:border-green-400/80 hover:shadow-[0_0_30px_rgba(34,197,94,0.5),0_0_60px_rgba(34,197,94,0.2)]"
     >
       {/* Cartoon highlight effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-green-500/0 via-green-500/0 to-green-500/0 group-hover:from-green-500/10 group-hover:via-green-500/5 group-hover:to-green-500/0 transition-all duration-300 pointer-events-none" />
@@ -77,9 +77,9 @@ function CharacterCard({ character }: CharacterCardProps) {
         {/* Green glow overlay on hover */}
         <div className="absolute inset-0 bg-green-500/0 group-hover:bg-green-500/10 transition-all duration-300" />
       </div>
-      <div className="p-4 relative z-10 dark:bg-gradient-to-b dark:from-transparent dark:to-green-950/40 bg-gradient-to-b from-transparent to-green-950/60">
-        <div className="mb-2 flex items-center gap-2">
-          <div className="relative flex-shrink-0 z-20 -ml-1 w-8 h-8 flex items-center justify-center overflow-visible">
+      <div className="p-3 sm:p-4 relative z-10 dark:bg-gradient-to-b dark:from-transparent dark:to-green-950/40 bg-gradient-to-b from-transparent to-green-950/60">
+        <div className="mb-2 flex items-center gap-2 min-w-0">
+          <div className="relative flex-shrink-0 z-20 w-8 h-8 flex items-center justify-center overflow-visible">
             <button
               onClick={handleFavoriteClick}
               className={`flex-shrink-0 text-yellow-400 hover:text-yellow-300 transition-colors w-8 h-8 flex items-center justify-center p-1 ${
@@ -114,7 +114,7 @@ function CharacterCard({ character }: CharacterCardProps) {
             )}
           </div>
           <div className="flex items-center gap-2 flex-1 min-w-0">
-            <h3 className="text-lg font-bold dark:text-green-300 text-green-200 group-hover:dark:text-green-200 group-hover:text-green-100 transition-colors drop-shadow-[0_0_8px_rgba(34,197,94,0.5)] truncate">
+            <h3 className="text-base sm:text-lg font-bold dark:text-green-300 text-green-200 group-hover:dark:text-green-200 group-hover:text-green-100 transition-colors drop-shadow-[0_0_8px_rgba(34,197,94,0.5)] truncate flex-1 min-w-0">
               {character.name}
             </h3>
             <div
@@ -124,7 +124,7 @@ function CharacterCard({ character }: CharacterCardProps) {
             />
           </div>
         </div>
-        <p className="text-sm dark:text-green-200/70 text-green-200/80 group-hover:dark:text-green-200/90 group-hover:text-green-100 transition-colors">{character.species}</p>
+        <p className="text-xs sm:text-sm dark:text-green-200/70 text-green-200/80 group-hover:dark:text-green-200/90 group-hover:text-green-100 transition-colors break-words">{character.species}</p>
         <p className="text-xs dark:text-green-300/50 text-green-300/60 truncate group-hover:dark:text-green-300/70 group-hover:text-green-200/80 transition-colors" title={character.location.name}>
           {character.location.name}
         </p>

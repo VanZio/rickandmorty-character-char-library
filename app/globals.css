@@ -594,3 +594,13 @@ body:not(.dark) .bg-black\/60 {
 body:not(.dark) .bg-black\/90 {
   background-color: rgba(0, 0, 0, 0.9) !important;
 }
+
+/* Hide scrollbar for pagination */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}

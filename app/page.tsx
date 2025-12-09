@@ -25,7 +25,7 @@ export default function Home() {
     <ErrorBoundary>
       <div className="min-h-screen relative">
 
-        <main className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <main className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 max-w-full overflow-x-hidden">
             <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Link
