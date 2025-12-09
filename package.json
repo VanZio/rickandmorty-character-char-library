@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "deploy": "npx wrangler pages deploy out --project-name=rickandmorty"
   },
   "dependencies": {
     "next": "16.0.8",
