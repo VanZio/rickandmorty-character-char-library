@@ -1,9 +1,11 @@
 import { create } from "zustand";
-import type { Character } from "@/types";
-import { getCharacters, getCharacter, ApiError } from "@/lib/api";
+import type { Character, Episode } from "@/types";
+import { getCharacters, getCharacter, getEpisodes, getEpisode, ApiError } from "@/lib/api";
 
 interface CharacterState {
   characters: Character[];
+  allCharacters: Character[]; // Pre-loaded all characters
+  episodes: Map<number, Episode>; // Pre-loaded episodes by ID
   selectedCharacter: Character | null;
   currentPage: number;
   totalPages: number;
@@ -14,6 +16,7 @@ interface CharacterState {
   filterGender: string;
   loading: boolean;
   loadingCharacter: boolean;
+  loadingAllData: boolean;
   error: string | null;
   errorCode: number | null;
   isPolling: boolean;
@@ -21,6 +24,8 @@ interface CharacterState {
   
   fetchCharacters: (page?: number, name?: string, status?: string, species?: string, gender?: string) => Promise<void>;
   fetchCharacter: (id: number) => Promise<void>;
+  loadAllData: () => Promise<void>;
+  getCharacterEpisodes: (character: Character) => Episode[];
   setSearchName: (name: string) => void;
   setFilterStatus: (status: string) => void;
   setFilterSpecies: (species: string) => void;
@@ -33,6 +38,8 @@ interface CharacterState {
 
 export const useCharacterStore = create<CharacterState>((set, get) => ({
   characters: [],
+  allCharacters: [],
+  episodes: new Map<number, Episode>(),
   selectedCharacter: null,
   currentPage: 1,
   totalPages: 0,
@@ -43,6 +50,7 @@ export const useCharacterStore = create<CharacterState>((set, get) => ({
   filterGender: "",
   loading: false,
   loadingCharacter: false,
+  loadingAllData: false,
   error: null,
   errorCode: null,
   isPolling: false,
@@ -153,6 +161,83 @@ export const useCharacterStore = create<CharacterState>((set, get) => ({
 
   clearError: () => {
     set({ error: null, errorCode: null });
+  },
+
+  loadAllData: async () => {
+    const state = get();
+    if (state.allCharacters.length > 0 && state.episodes.size > 0) {
+      // Data already loaded
+      return;
+    }
+
+    set({ loadingAllData: true, error: null, errorCode: null });
+
+    try {
+      // Load all characters
+      const allChars: Character[] = [];
+      let currentPage = 1;
+      let totalPages = 1;
+
+      do {
+        const data = await getCharacters(currentPage);
+        allChars.push(...data.results);
+        totalPages = data.info.pages;
+        currentPage++;
+      } while (currentPage <= totalPages);
+
+      // Load all episodes
+      const episodesMap = new Map<number, Episode>();
+      currentPage = 1;
+      totalPages = 1;
+
+      do {
+        const data = await getEpisodes(currentPage);
+        data.results.forEach((episode) => {
+          episodesMap.set(episode.id, episode);
+        });
+        totalPages = data.info.pages;
+        currentPage++;
+      } while (currentPage <= totalPages);
+
+      set({
+        allCharacters: allChars,
+        episodes: episodesMap,
+        totalCount: allChars.length,
+        loadingAllData: false,
+      });
+
+      // Load first page of characters for display
+      await get().fetchCharacters(1);
+    } catch (error) {
+      const errorMessage = error instanceof ApiError 
+        ? error.message 
+        : error instanceof Error 
+        ? error.message 
+        : "An error occurred";
+      
+      const errorCode = error instanceof ApiError ? error.status : null;
+      
+      set({
+        error: errorMessage,
+        errorCode,
+        loadingAllData: false,
+      });
+    }
+  },
+
+  getCharacterEpisodes: (character: Character): Episode[] => {
+    const { episodes } = get();
+    const episodeIds = character.episode
+      .map((url) => {
+        const match = url.match(/\/(\d+)$/);
+        return match ? parseInt(match[1], 10) : null;
+      })
+      .filter((id): id is number => id !== null);
+
+    return episodeIds
+      .map((id) => episodes.get(id))
+      .filter((episode): episode is Episode => episode !== undefined)
+      .sort((a, b) => a.id - b.id);
   },
 }));
 

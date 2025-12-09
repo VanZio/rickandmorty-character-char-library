@@ -11,9 +11,15 @@ import BackgroundMusic from "@/components/BackgroundMusic";
 import { useCharacterStore } from "@/store/characterStore";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Home() {
-  const { totalCount } = useCharacterStore();
+  const { totalCount, loadAllData, loadingAllData } = useCharacterStore();
+
+  useEffect(() => {
+    // Pre-load all characters and episodes on mount
+    loadAllData();
+  }, [loadAllData]);
 
   return (
     <ErrorBoundary>
