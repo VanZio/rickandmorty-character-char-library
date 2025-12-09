@@ -139,6 +139,7 @@ export default function EpisodesPage() {
               <Link
                 key={episode.id}
                 href={`/episodes/${episode.id}`}
+                prefetch={false}
                 className="cartoon-hover group relative block overflow-hidden rounded-lg border-2 border-green-500/30 bg-gradient-to-br from-green-950/30 via-green-900/20 to-black/60 backdrop-blur-sm transition-all duration-300 hover:border-green-400/60 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]"
               >
                 <div className="p-6">

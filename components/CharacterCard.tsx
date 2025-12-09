@@ -59,6 +59,7 @@ function CharacterCard({ character }: CharacterCardProps) {
     <Link
       href={`/character/${character.id}`}
       onClick={handleClick}
+      prefetch={false}
       className="group relative block w-full overflow-hidden rounded-lg border-2 border-green-500/30 dark:bg-gradient-to-br dark:from-green-950/30 dark:via-green-900/20 dark:to-black/60 bg-gradient-to-br from-green-950/60 via-green-900/50 to-black/80 backdrop-blur-sm cartoon-hover hover:border-green-400/80 hover:shadow-[0_0_30px_rgba(34,197,94,0.5),0_0_60px_rgba(34,197,94,0.2)]"
     >
       {/* Cartoon highlight effect */}

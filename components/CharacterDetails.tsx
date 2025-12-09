@@ -130,6 +130,7 @@ export default function CharacterDetails() {
                         key={episode.id}
                         href={`/episodes/${episode.id}`}
                         onClick={clearSelectedCharacter}
+                        prefetch={false}
                         className="cartoon-hover block rounded-lg border border-green-500/30 bg-gradient-to-br from-green-950/40 via-green-900/30 to-black/60 px-3 py-2 text-xs sm:text-sm transition-all hover:border-green-400/60 hover:bg-gradient-to-br hover:from-green-950/60 hover:via-green-900/40 hover:to-black/80 hover:shadow-[0_0_10px_rgba(34,197,94,0.3)] min-w-0 w-full"
                       >
                         <div className="flex items-center justify-between gap-2 mb-1">

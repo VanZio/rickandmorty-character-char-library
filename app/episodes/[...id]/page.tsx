@@ -1,6 +1,9 @@
 import EpisodeDetailClient from "./EpisodeDetailClient";
 import { getEpisodes } from "@/lib/api";
 
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   try {
     // Fetch all episodes to get total count

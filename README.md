@@ -32,6 +32,6 @@ API setup: 30 min
 UI/UX: 30 min 
 extra/bonus features: 40 min
 Final testing and fixes: 30 min
-Deployment: 10 min
+Deployment and production fixes: 1 hr
 
-Total time spent: 2 hr 20 min / 140 min 
+Total time spent: 3 hr 10 min / 190 min 
