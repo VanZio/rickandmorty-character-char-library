@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getEpisodes, getEpisode, type Episode } from "@/lib/api";
+import { getEpisodes, getEpisode } from "@/lib/api";
+import type { Episode } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
 import LoadingIndicator from "@/components/LoadingIndicator";

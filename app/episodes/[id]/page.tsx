@@ -2,8 +2,8 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getEpisode, getCharactersByIds, type Episode } from "@/lib/api";
-import type { Character } from "@/types";
+import { getEpisode, getCharactersByIds } from "@/lib/api";
+import type { Character, Episode } from "@/types";
 import Link from "next/link";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import ErrorState from "@/components/ErrorState";

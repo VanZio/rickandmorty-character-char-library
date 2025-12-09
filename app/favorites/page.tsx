@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useFavoriteStore } from "@/store/favoriteStore";
-import { getCharacter, type Character } from "@/lib/api";
+import { getCharacter } from "@/lib/api";
+import type { Character } from "@/types";
 import CharacterCard from "@/components/CharacterCard";
 import CharacterDetails from "@/components/CharacterDetails";
 import LoadingIndicator from "@/components/LoadingIndicator";
