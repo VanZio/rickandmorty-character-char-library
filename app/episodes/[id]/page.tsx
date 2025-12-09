@@ -11,6 +11,10 @@ import CharacterCard from "@/components/CharacterCard";
 import SkeletonCard from "@/components/SkeletonCard";
 import UniverseBackground from "@/components/UniverseBackground";
 
+export function generateStaticParams() {
+  return [];
+}
+
 export default function EpisodeDetailPage() {
   const params = useParams();
   const router = useRouter();

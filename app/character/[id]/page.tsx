@@ -7,6 +7,10 @@ import UniverseBackground from "@/components/UniverseBackground";
 import Image from "next/image";
 import Link from "next/link";
 
+export function generateStaticParams() {
+  return [];
+}
+
 export default function CharacterDetailPage() {
   const params = useParams();
   const router = useRouter();
