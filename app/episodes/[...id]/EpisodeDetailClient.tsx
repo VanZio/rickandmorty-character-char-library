@@ -11,14 +11,11 @@ import CharacterCard from "@/components/CharacterCard";
 import SkeletonCard from "@/components/SkeletonCard";
 import UniverseBackground from "@/components/UniverseBackground";
 
-export function generateStaticParams() {
-  return [];
-}
-
-export default function EpisodeDetailPage() {
+export default function EpisodeDetailClient() {
   const params = useParams();
   const router = useRouter();
-  const id = Number(params.id);
+  const idArray = params.id as string | string[];
+  const id = Number(Array.isArray(idArray) ? idArray[0] : idArray);
   const [episode, setEpisode] = useState<Episode | null>(null);
   const [characters, setCharacters] = useState<Character[]>([]);
   const [loading, setLoading] = useState(true);
@@ -26,10 +23,15 @@ export default function EpisodeDetailPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Always fetch fresh data when ID changes
     if (id && !isNaN(id)) {
+      // Clear previous data immediately to show loading state
+      setEpisode(null);
+      setCharacters([]);
+      setError(null);
+      setLoading(true);
+      
       const fetchEpisode = async () => {
-        setLoading(true);
-        setError(null);
         try {
           const data = await getEpisode(id);
           setEpisode(data);

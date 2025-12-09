@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "deploy": "npx wrangler pages deploy out --project-name=rickandmorty",
+    "deploy": "npm run build && npx wrangler pages deploy out --project-name=rickandmorty",
     "start": "next start",
     "lint": "eslint",
     "test": "jest",

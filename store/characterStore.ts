@@ -88,7 +88,13 @@ export const useCharacterStore = create<CharacterState>((set, get) => ({
   },
 
   fetchCharacter: async (id) => {
-    set({ loadingCharacter: true, error: null, errorCode: null });
+    // Clear previous character data to ensure fresh fetch
+    set({ 
+      loadingCharacter: true, 
+      error: null, 
+      errorCode: null,
+      selectedCharacter: null // Clear previous character
+    });
     try {
       const character = await getCharacter(id);
       set({ selectedCharacter: character, loadingCharacter: false });
@@ -105,6 +111,7 @@ export const useCharacterStore = create<CharacterState>((set, get) => ({
         error: errorMessage,
         errorCode,
         loadingCharacter: false,
+        selectedCharacter: null, // Ensure no stale data on error
       });
     }
   },

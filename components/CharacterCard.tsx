@@ -79,10 +79,10 @@ function CharacterCard({ character }: CharacterCardProps) {
       </div>
       <div className="p-4 relative z-10 dark:bg-gradient-to-b dark:from-transparent dark:to-green-950/40 bg-gradient-to-b from-transparent to-green-950/60">
         <div className="mb-2 flex items-center gap-2">
-          <div className="relative flex-shrink-0 z-20 -ml-1 w-6 h-6 flex items-center justify-center overflow-visible">
+          <div className="relative flex-shrink-0 z-20 -ml-1 w-8 h-8 flex items-center justify-center overflow-visible">
             <button
               onClick={handleFavoriteClick}
-              className={`flex-shrink-0 text-yellow-400 hover:text-yellow-300 transition-colors w-6 h-6 flex items-center justify-center ${
+              className={`flex-shrink-0 text-yellow-400 hover:text-yellow-300 transition-colors w-8 h-8 flex items-center justify-center p-1 ${
                 isAnimating ? "favorite-animate" : ""
               }`}
               aria-label={isFavorite(character.id) ? "Remove from favorites" : "Add to favorites"}

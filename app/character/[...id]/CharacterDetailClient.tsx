@@ -7,14 +7,11 @@ import UniverseBackground from "@/components/UniverseBackground";
 import Image from "next/image";
 import Link from "next/link";
 
-export function generateStaticParams() {
-  return [];
-}
-
-export default function CharacterDetailPage() {
+export default function CharacterDetailClient() {
   const params = useParams();
   const router = useRouter();
-  const id = Number(params.id);
+  const idArray = params.id as string | string[];
+  const id = Number(Array.isArray(idArray) ? idArray[0] : idArray);
 
   const {
     selectedCharacter,
@@ -26,10 +23,15 @@ export default function CharacterDetailPage() {
   } = useCharacterStore();
 
   useEffect(() => {
+    // Always fetch fresh data when ID changes
     if (id && !isNaN(id)) {
+      // Clear previous character to show loading state
+      clearError();
       fetchCharacter(id);
     }
-  }, [id, fetchCharacter]);
+    // Only depend on id to ensure fresh fetch on navigation
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
@@ -182,5 +184,4 @@ export default function CharacterDetailPage() {
     </div>
   );
 }
-
 
