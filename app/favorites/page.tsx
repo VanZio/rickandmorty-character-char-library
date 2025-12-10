@@ -116,8 +116,11 @@ export default function FavoritesPage() {
         </div>
 
         <header className="mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-bold text-green-300 drop-shadow-[0_0_10px_rgba(34,197,94,0.6)] sm:text-5xl">
-            ⭐ Favorites
+          <h1 className="mb-4 flex items-center justify-center gap-3 text-4xl font-bold text-green-300 drop-shadow-[0_0_10px_rgba(34,197,94,0.6)] sm:text-5xl">
+            <svg className="h-8 w-8 fill-current sm:h-10 sm:w-10" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+            Favorites
           </h1>
           <p className="text-lg text-green-300/80 sm:text-xl font-medium">
             {characters.length} favorite {characters.length !== 1 ? "characters" : "character"}
@@ -127,9 +130,9 @@ export default function FavoritesPage() {
 
         {characters.length === 0 ? (
           <EmptyState
-            icon="⭐"
+            icon="❤️"
             title="No favorites yet"
-            message="Start adding characters to your favorites by clicking the star icon on character cards"
+            message="Start adding characters to your favorites by clicking the heart icon on character cards"
             actionLabel="Browse Characters"
             onAction={() => window.location.href = "/"}
           />

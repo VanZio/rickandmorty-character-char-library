@@ -38,9 +38,12 @@ export default function Home() {
               <Link
                 href="/favorites"
                 prefetch={false}
-                className="cartoon-hover rounded-lg border-2 border-yellow-500/40 bg-gradient-to-br from-yellow-950/40 via-yellow-900/30 to-black/60 px-4 py-2 text-yellow-300 transition-all hover:border-yellow-400 hover:bg-gradient-to-br hover:from-yellow-950/60 hover:via-yellow-900/40 hover:to-black/80 hover:shadow-[0_0_15px_rgba(234,179,8,0.4)]"
+                className="cartoon-hover flex items-center gap-2 rounded-lg border-2 border-green-500/40 bg-gradient-to-br from-green-950/40 via-green-900/30 to-black/60 px-4 py-2 text-green-300 transition-all hover:border-green-400 hover:bg-gradient-to-br hover:from-green-950/60 hover:via-green-900/40 hover:to-black/80 hover:shadow-[0_0_15px_rgba(34,197,94,0.4)]"
               >
-                ⭐ Favorites
+                <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+                Favorites
               </Link>
             </div>
             <div className="flex items-center gap-3">
