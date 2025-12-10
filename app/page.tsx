@@ -30,12 +30,14 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <Link
                 href="/episodes"
+                prefetch={false}
                 className="cartoon-hover rounded-lg border-2 border-green-500/40 bg-gradient-to-br from-green-950/40 via-green-900/30 to-black/60 px-4 py-2 text-green-300 transition-all hover:border-green-400 hover:bg-gradient-to-br hover:from-green-950/60 hover:via-green-900/40 hover:to-black/80 hover:shadow-[0_0_15px_rgba(34,197,94,0.4)]"
               >
                 Episodes
               </Link>
               <Link
                 href="/favorites"
+                prefetch={false}
                 className="cartoon-hover rounded-lg border-2 border-yellow-500/40 bg-gradient-to-br from-yellow-950/40 via-yellow-900/30 to-black/60 px-4 py-2 text-yellow-300 transition-all hover:border-yellow-400 hover:bg-gradient-to-br hover:from-yellow-950/60 hover:via-yellow-900/40 hover:to-black/80 hover:shadow-[0_0_15px_rgba(234,179,8,0.4)]"
               >
                 ⭐ Favorites
