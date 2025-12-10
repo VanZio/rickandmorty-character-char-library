@@ -18,20 +18,27 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
 Run Tests
 
 ```bash
 npm test 
 ```
 
+## Deployed URL
+
+```bash
+https://rickandmorty-8a8.pages.dev/
+```
+
 ## Time spent
 
+```bash
 API setup: 30 min
-UI/UX: 30 min 
-extra/bonus features: 40 min
-Final testing and fixes: 30 min
+UI/UX: 1 hr 
+extra/bonus features: 1 hr
+Final testing and fixes: 1 hr
 Deployment and production fixes: 1 hr
 
-Total time spent: 3 hr 10 min / 190 min 
+Total time spent: 5 hr 30 min
+```
+
